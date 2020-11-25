@@ -5,6 +5,6 @@ output "testing_sclient" {
   value = "Test this SSL by using openssl s_client -host ${aws_route53_record.myapp.fqdn} -port 443 and looking at the certs"
 }
 
-output "acm_arn" {
-  value = aws_acm_certificate_validation.cert.certificate_arn
-}
+#output "acm_arn" {
+#  value = aws_acm_certificate_validation.cert.certificate_arn
+#}
