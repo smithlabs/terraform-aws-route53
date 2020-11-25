@@ -7,7 +7,7 @@ output "testing_sclient" {
 
 output "zone_public_id" {
   description = "The public ID of the DNS zone"
-  value = "data.aws_route53_zone.public.id"
+  value = "data.aws_route53_zone.public.zone_id"
 }
 
 #output "acm_arn" {
