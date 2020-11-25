@@ -8,14 +8,13 @@ data "aws_route53_zone" "public" {
 resource "aws_route53_record" "myapp" {
   allow_overwrite = true
   zone_id         = data.aws_route53_zone.public.zone_id
-  name            = "${data.aws_route53_zone.public.name}"
+  name            = data.aws_route53_zone.public.name
   type            = "A"
   alias {
-    name                   = aws_alb.mylb.dns_name
-    zone_id                = aws_alb.mylb.zone_id
+    name                   = var.load_balancer_name
+    zone_id                = var.zone_id
     evaluate_target_health = false
   }
-  provider = aws.account_route53
 }
 
 # This is a DNS record for the ACM certificate validation to prove we own the domain
