@@ -16,3 +16,16 @@ resource "aws_route53_record" "myapp" {
     evaluate_target_health = false
   }
 }
+
+# Add www record for domain
+resource "aws_route53_record" "myapp" {
+  allow_overwrite = true
+  zone_id         = data.aws_route53_zone.public.zone_id
+  name            = "www.${data.aws_route53_zone.public.name}"
+  type            = "A"
+  alias {
+    name                   = var.load_balancer_name
+    zone_id                = var.zone_id
+    evaluate_target_health = false
+  }
+}
