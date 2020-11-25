@@ -18,7 +18,7 @@ resource "aws_route53_record" "myapp" {
 }
 
 # Add www record for domain
-resource "aws_route53_record" "myapp" {
+resource "aws_route53_record" "www" {
   allow_overwrite = true
   zone_id         = data.aws_route53_zone.public.zone_id
   name            = "www.${data.aws_route53_zone.public.name}"
